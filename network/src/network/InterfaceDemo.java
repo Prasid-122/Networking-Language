@@ -10,13 +10,11 @@ public class InterfaceDemo {
         Enumeration<NetworkInterface> ips =NetworkInterface.getNetworkInterfaces();
         while(ips.hasMoreElements()){
             NetworkInterface ip = ips.nextElement();
-            System.out.println(ip);
-        }
-        NetworkInterface e = NetworkInterface.getByName("en0");
-        InetAddress myip =InetAddress.getLocalHost();
-        NetworkInterface m = NetworkInterface.getByInetAddress(myip);
+          
+       
         
-        System.out.println(m.getDisplayName());
+        System.out.println(ip.getDisplayName());
+        }
     }
     
 }
