@@ -27,11 +27,22 @@ Scanner sc = new Scanner(System.in);
         String address = sc.nextLine();
         String q = "name="+name+"Email="+email+"address="+address;
         byte[] postDate = q.getBytes(StandardCharsets.UTF_8);
+        
+        //  proxy  
+SocketAddress ip = new InetSocketAddress("192.168.10.10",80);
+Proxy p = new Proxy(Proxy.Type.HTTP, ip);
+        
+        
+        
 //        2. Establish the connection using HttpURLConnection
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection(p);
         conn.setDoOutput(true);
         conn.setRequestMethod("POST");
-        
+//        to enable the streaming mode
+    conn.setFixedLengthStreamingMode(4000);
+    
+
+    
 //        3. write the byte date using the output.
         OutputStream stream = conn.getOutputStream();
         stream.write(postDate);
